@@ -1,6 +1,10 @@
 import { NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 
+// Disable caching for this route
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 interface PurchaseRow {
   id: string;
   price_locked: number;
@@ -40,7 +44,15 @@ export async function GET() {
       createdAt: p.created_at,
     }));
 
-    return NextResponse.json({ purchases });
+    return NextResponse.json(
+      { purchases },
+      {
+        headers: {
+          "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0",
+          "Pragma": "no-cache",
+        },
+      }
+    );
   } catch (error) {
     console.error("Purchases API error:", error);
     return NextResponse.json(
