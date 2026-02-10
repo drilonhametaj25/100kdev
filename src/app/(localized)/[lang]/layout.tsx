@@ -101,6 +101,7 @@ export async function generateMetadata({
         "max-snippet": -1,
       },
     },
+    manifest: "/site.webmanifest",
   };
 }
 

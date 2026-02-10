@@ -13,6 +13,40 @@ export function Footer() {
   return (
     <footer className="relative z-10 border-t border-white/10 bg-black/50 backdrop-blur-sm">
       <div className="max-w-6xl mx-auto px-4 py-8">
+        {/* Navigation links */}
+        <div className="flex flex-wrap justify-center gap-4 md:gap-6 mb-6 text-sm font-mono">
+          <Link
+            href={`/${language}/about`}
+            className="text-white/60 hover:text-white transition-colors"
+          >
+            {t.navAbout}
+          </Link>
+          <Link
+            href={`/${language}/services`}
+            className="text-white/60 hover:text-white transition-colors"
+          >
+            {t.navServices}
+          </Link>
+          <Link
+            href={`/${language}/pricing`}
+            className="text-white/60 hover:text-white transition-colors"
+          >
+            {t.navPricing}
+          </Link>
+          <Link
+            href={`/${language}/blog`}
+            className="text-white/60 hover:text-white transition-colors"
+          >
+            {t.navBlog}
+          </Link>
+          <Link
+            href={`/${language}/contact`}
+            className="text-white/60 hover:text-white transition-colors"
+          >
+            {t.navContact}
+          </Link>
+        </div>
+
         {/* Legal links */}
         <div className="flex flex-wrap justify-center gap-4 md:gap-6 mb-6 text-xs font-mono">
           <Link

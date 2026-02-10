@@ -277,4 +277,15 @@ export const en: Translations = {
   blogReadMore: "Read more",
   blogNoArticles: "No articles yet. Check back soon!",
   blogBack: "Back to blog",
+
+  // Navigation
+  navHome: "Home",
+  navAbout: "About",
+  navServices: "Services",
+  navPricing: "Pricing",
+  navBlog: "Blog",
+  navContact: "Contact",
+  navSocialPrice: "Social Price",
+  menuOpen: "Open menu",
+  menuClose: "Close menu",
 };

@@ -274,6 +274,17 @@ export interface Translations {
   blogReadMore: string;
   blogNoArticles: string;
   blogBack: string;
+
+  // Navigation
+  navHome: string;
+  navAbout: string;
+  navServices: string;
+  navPricing: string;
+  navBlog: string;
+  navContact: string;
+  navSocialPrice: string;
+  menuOpen: string;
+  menuClose: string;
 }
 
 export type TranslationKey = keyof Translations;

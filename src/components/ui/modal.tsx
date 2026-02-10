@@ -43,7 +43,7 @@ export function Modal({ isOpen, onClose, children, title }: ModalProps) {
       onClick={handleOverlayClick}
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
     >
-      <div className="relative w-full max-w-lg bg-[#0a0a0a] border border-white/10 rounded-lg shadow-2xl">
+      <div className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto bg-[#0a0a0a] border border-white/10 rounded-lg shadow-2xl">
         {/* Header */}
         {title && (
           <div className="flex items-center justify-between p-4 border-b border-white/10">

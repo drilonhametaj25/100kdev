@@ -106,7 +106,7 @@ export function CookieBanner() {
                 type="checkbox"
                 checked
                 disabled
-                className="w-5 h-5 accent-white cursor-not-allowed opacity-50"
+                className="w-6 h-6 accent-white cursor-not-allowed opacity-50"
               />
             </div>
 
@@ -124,7 +124,7 @@ export function CookieBanner() {
                 onChange={(e) =>
                   setTempPrefs({ ...tempPrefs, analytics: e.target.checked })
                 }
-                className="w-5 h-5 accent-white cursor-pointer"
+                className="w-6 h-6 accent-white cursor-pointer"
               />
             </div>
 
@@ -142,7 +142,7 @@ export function CookieBanner() {
                 onChange={(e) =>
                   setTempPrefs({ ...tempPrefs, marketing: e.target.checked })
                 }
-                className="w-5 h-5 accent-white cursor-pointer"
+                className="w-6 h-6 accent-white cursor-pointer"
               />
             </div>
 
