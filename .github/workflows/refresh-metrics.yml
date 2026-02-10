@@ -2,8 +2,8 @@ name: Refresh TikTok Metrics
 
 on:
   schedule:
-    # Run every 2 minutes
-    - cron: '*/2 * * * *'
+    # Run every 5 minutes (reduced frequency to avoid rate limits)
+    - cron: '*/5 * * * *'
   workflow_dispatch:
     # Allow manual trigger
 
@@ -11,137 +11,24 @@ jobs:
   refresh:
     runs-on: ubuntu-latest
     steps:
-      - name: Fetch and update TikTok metrics
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: |
+          cd scripts
+          npm init -y
+          npm install puppeteer puppeteer-extra puppeteer-extra-plugin-stealth
+
+      - name: Run scraper
         env:
           SITE_URL: ${{ secrets.SITE_URL }}
           CRON_SECRET: ${{ secrets.CRON_SECRET }}
         run: |
-          echo "Fetching list of social projects..."
-
-          # Get list of projects
-          projects_response=$(curl -sL "$SITE_URL/api/social-projects/list" \
-            -H "Authorization: Bearer $CRON_SECRET")
-
-          echo "Projects response: $projects_response"
-
-          # Check if we got projects
-          if ! echo "$projects_response" | jq -e '.projects' > /dev/null 2>&1; then
-            echo "Failed to get projects list"
-            exit 1
-          fi
-
-          # Get number of projects
-          project_count=$(echo "$projects_response" | jq '.projects | length')
-          echo "Found $project_count projects to update"
-
-          if [ "$project_count" -eq 0 ]; then
-            echo "No projects to update"
-            exit 0
-          fi
-
-          updated=0
-          failed=0
-
-          # Process each project
-          for i in $(seq 0 $((project_count - 1))); do
-            project_id=$(echo "$projects_response" | jq -r ".projects[$i].id")
-            tiktok_url=$(echo "$projects_response" | jq -r ".projects[$i].tiktokUrl")
-
-            echo ""
-            echo "Processing project $project_id"
-            echo "TikTok URL: $tiktok_url"
-
-            # Extract video ID from URL
-            video_id=$(echo "$tiktok_url" | grep -oP '/video/\K\d+' || echo "")
-
-            if [ -z "$video_id" ]; then
-              echo "Could not extract video ID from URL"
-              failed=$((failed + 1))
-              continue
-            fi
-
-            echo "Video ID: $video_id"
-
-            # Fetch UrLeBird page
-            urlebird_url="https://urlebird.com/video/${video_id}/"
-            echo "Fetching: $urlebird_url"
-
-            html=$(curl -sL "$urlebird_url" \
-              -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
-              -H "Accept: text/html,application/xhtml+xml" \
-              --max-time 15)
-
-            if [ -z "$html" ] || [ ${#html} -lt 1000 ]; then
-              echo "Empty or invalid response from UrLeBird"
-              failed=$((failed + 1))
-              continue
-            fi
-
-            # Extract metrics using grep and sed
-            # Format: "17.69K views", "215 likes", "18 comments", "108 shares"
-            views_raw=$(echo "$html" | grep -oP '[\d.,]+[KMB]?\s*views' | head -1 | grep -oP '[\d.,]+[KMB]?' || echo "0")
-            likes_raw=$(echo "$html" | grep -oP '[\d.,]+[KMB]?\s*likes' | head -1 | grep -oP '[\d.,]+[KMB]?' || echo "0")
-            comments_raw=$(echo "$html" | grep -oP '[\d.,]+[KMB]?\s*comments' | head -1 | grep -oP '[\d.,]+[KMB]?' || echo "0")
-            shares_raw=$(echo "$html" | grep -oP '[\d.,]+[KMB]?\s*shares' | head -1 | grep -oP '[\d.,]+[KMB]?' || echo "0")
-
-            echo "Raw metrics: views=$views_raw, likes=$likes_raw, comments=$comments_raw, shares=$shares_raw"
-
-            # Convert K/M/B to numbers
-            convert_count() {
-              local val="$1"
-              val=$(echo "$val" | tr ',' '.')
-
-              if [[ "$val" =~ [Kk]$ ]]; then
-                val=$(echo "$val" | sed 's/[Kk]$//')
-                val=$(echo "$val * 1000" | bc | cut -d. -f1)
-              elif [[ "$val" =~ [Mm]$ ]]; then
-                val=$(echo "$val" | sed 's/[Mm]$//')
-                val=$(echo "$val * 1000000" | bc | cut -d. -f1)
-              elif [[ "$val" =~ [Bb]$ ]]; then
-                val=$(echo "$val" | sed 's/[Bb]$//')
-                val=$(echo "$val * 1000000000" | bc | cut -d. -f1)
-              else
-                val=$(echo "$val" | cut -d. -f1)
-              fi
-
-              echo "${val:-0}"
-            }
-
-            views=$(convert_count "$views_raw")
-            likes=$(convert_count "$likes_raw")
-            comments=$(convert_count "$comments_raw")
-            shares=$(convert_count "$shares_raw")
-
-            echo "Parsed metrics: views=$views, likes=$likes, comments=$comments, shares=$shares"
-
-            # Check if we got any metrics
-            if [ "$views" -eq 0 ] && [ "$likes" -eq 0 ]; then
-              echo "Could not extract metrics"
-              failed=$((failed + 1))
-              continue
-            fi
-
-            # Send metrics to API
-            update_response=$(curl -sL -X POST "$SITE_URL/api/admin/social/update-metrics" \
-              -H "Authorization: Bearer $CRON_SECRET" \
-              -H "Content-Type: application/json" \
-              -d "{\"projectId\":\"$project_id\",\"views\":$views,\"likes\":$likes,\"comments\":$comments,\"shares\":$shares}")
-
-            echo "Update response: $update_response"
-
-            if echo "$update_response" | jq -e '.success' > /dev/null 2>&1; then
-              echo "Successfully updated project $project_id"
-              updated=$((updated + 1))
-            else
-              echo "Failed to update project $project_id"
-              failed=$((failed + 1))
-            fi
-
-            # Small delay between requests
-            sleep 1
-          done
-
-          echo ""
-          echo "========================================="
-          echo "Completed: $updated updated, $failed failed"
-          echo "========================================="
+          cd scripts
+          node scrape-tiktok-metrics.js
