@@ -181,9 +181,6 @@ export default function SocialPricePage() {
                 <span className="text-3xl font-mono font-bold text-price-social">
                   {formatPrice(project.calculatedPrice)}
                 </span>
-                <span className="text-xs text-white/30 ml-2">
-                  floor {formatPrice(project.floorPrice)}
-                </span>
               </div>
 
               {/* Quick Metrics */}

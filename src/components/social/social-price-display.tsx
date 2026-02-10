@@ -30,9 +30,9 @@ export function SocialPriceDisplay({ price, floorPrice, capPrice }: SocialPriceD
         {formatPrice(price)}
       </div>
 
-      {/* Range info */}
+      {/* Update frequency info */}
       <div className="mt-4 text-sm font-mono text-white/40">
-        floor: {formatPrice(floorPrice)} — cap: {formatPrice(capPrice)}
+        Updates every 30 minutes
       </div>
     </div>
   );
