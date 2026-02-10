@@ -63,9 +63,10 @@ export async function POST(request: NextRequest) {
 
     const supabase = createAdminClient();
 
-    // Calculate expires_at: use provided value, or calculate from durationHours, or default to 48h
-    const durationMs = (body.durationHours ?? 48) * 60 * 60 * 1000;
-    const expiresAt = body.expiresAt || new Date(Date.now() + durationMs).toISOString();
+    // Calculate expires_at based on duration_hours from creation time
+    const durationHours = body.durationHours ?? 48;
+    const durationMs = durationHours * 60 * 60 * 1000;
+    const expiresAt = new Date(Date.now() + durationMs).toISOString();
 
     const { data, error } = await supabase
       .from("social_projects")
@@ -83,6 +84,7 @@ export async function POST(request: NextRequest) {
         saves_count: body.savesCount ?? 0,
         is_active: true,
         status: "live",
+        duration_hours: durationHours,
         expires_at: expiresAt,
       })
       .select()
@@ -135,9 +137,21 @@ export async function PUT(request: NextRequest) {
     if (body.commentsCount !== undefined) updateData.comments_count = body.commentsCount;
     if (body.sharesCount !== undefined) updateData.shares_count = body.sharesCount;
     if (body.savesCount !== undefined) updateData.saves_count = body.savesCount;
-    if (body.expiresAt !== undefined) updateData.expires_at = body.expiresAt;
+    // If durationHours is provided, fetch created_at and recalculate expires_at
     if (body.durationHours !== undefined) {
-      updateData.expires_at = new Date(Date.now() + body.durationHours * 60 * 60 * 1000).toISOString();
+      // First, get the project's created_at
+      const { data: existingProject } = await supabase
+        .from("social_projects")
+        .select("created_at")
+        .eq("id", body.id)
+        .single();
+
+      if (existingProject?.created_at) {
+        const createdAt = new Date(existingProject.created_at);
+        const expiresAt = new Date(createdAt.getTime() + body.durationHours * 60 * 60 * 1000);
+        updateData.duration_hours = body.durationHours;
+        updateData.expires_at = expiresAt.toISOString();
+      }
     }
 
     const { data, error } = await supabase

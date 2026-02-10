@@ -28,6 +28,8 @@ interface SocialProject {
   capPrice: number;
   status: string;
   expiresAt: string | null;
+  createdAt: string;
+  durationHours: number;
 }
 
 export default function SocialPricePage() {

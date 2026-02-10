@@ -20,6 +20,8 @@ interface SocialProject {
   is_active: boolean;
   status: string;
   expires_at: string | null;
+  duration_hours: number;
+  created_at: string;
 }
 
 interface FormData {
@@ -90,10 +92,6 @@ export default function SocialAdminPage() {
 
   const handleEdit = (project: SocialProject) => {
     setEditingId(project.id);
-    // Calculate remaining hours from expires_at
-    const remainingHours = project.expires_at
-      ? Math.max(1, Math.round((new Date(project.expires_at).getTime() - Date.now()) / (1000 * 60 * 60)))
-      : 48;
     setFormData({
       title: project.title,
       description: project.description,
@@ -106,7 +104,7 @@ export default function SocialAdminPage() {
       commentsCount: project.comments_count,
       sharesCount: project.shares_count,
       savesCount: project.saves_count,
-      durationHours: remainingHours,
+      durationHours: project.duration_hours || 48,
     });
     setShowForm(true);
     setError(null);
@@ -334,7 +332,7 @@ export default function SocialAdminPage() {
             {/* Offer Duration */}
             <div>
               <label className="block text-sm font-mono text-white/50 mb-1">
-                Offer Duration (hours)
+                Offer Duration (hours from creation)
               </label>
               <input
                 type="number"
@@ -345,7 +343,7 @@ export default function SocialAdminPage() {
                 className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded text-white font-mono"
               />
               <p className="text-xs text-white/30 mt-1">
-                Default: 48 hours. Max: 30 days (720 hours)
+                The countdown expires X hours after creation. Default: 48h, Max: 30 days (720h)
               </p>
             </div>
 
