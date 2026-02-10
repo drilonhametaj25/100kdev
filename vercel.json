@@ -1,8 +1,0 @@
-{
-  "crons": [
-    {
-      "path": "/api/admin/social/fetch-metrics",
-      "schedule": "0 */6 * * *"
-    }
-  ]
-}
