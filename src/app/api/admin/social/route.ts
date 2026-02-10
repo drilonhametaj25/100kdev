@@ -16,6 +16,8 @@ interface SocialProjectInput {
   commentsCount?: number;
   sharesCount?: number;
   savesCount?: number;
+  expiresAt?: string | null;
+  durationHours?: number;
 }
 
 // GET - List all social projects (including inactive)
@@ -61,6 +63,10 @@ export async function POST(request: NextRequest) {
 
     const supabase = createAdminClient();
 
+    // Calculate expires_at: use provided value, or calculate from durationHours, or default to 48h
+    const durationMs = (body.durationHours ?? 48) * 60 * 60 * 1000;
+    const expiresAt = body.expiresAt || new Date(Date.now() + durationMs).toISOString();
+
     const { data, error } = await supabase
       .from("social_projects")
       .insert({
@@ -77,6 +83,7 @@ export async function POST(request: NextRequest) {
         saves_count: body.savesCount ?? 0,
         is_active: true,
         status: "live",
+        expires_at: expiresAt,
       })
       .select()
       .single();
@@ -128,6 +135,10 @@ export async function PUT(request: NextRequest) {
     if (body.commentsCount !== undefined) updateData.comments_count = body.commentsCount;
     if (body.sharesCount !== undefined) updateData.shares_count = body.sharesCount;
     if (body.savesCount !== undefined) updateData.saves_count = body.savesCount;
+    if (body.expiresAt !== undefined) updateData.expires_at = body.expiresAt;
+    if (body.durationHours !== undefined) {
+      updateData.expires_at = new Date(Date.now() + body.durationHours * 60 * 60 * 1000).toISOString();
+    }
 
     const { data, error } = await supabase
       .from("social_projects")

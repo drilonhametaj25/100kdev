@@ -5,7 +5,7 @@ import { useLanguage } from "@/hooks/use-language";
 import { useCookieConsent } from "@/hooks/use-cookie-consent";
 
 export function Footer() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const { openSettings } = useCookieConsent();
 
   const currentYear = new Date().getFullYear();
@@ -16,31 +16,31 @@ export function Footer() {
         {/* Legal links */}
         <div className="flex flex-wrap justify-center gap-4 md:gap-6 mb-6 text-xs font-mono">
           <Link
-            href="/privacy"
+            href={`/${language}/privacy`}
             className="text-white/50 hover:text-white transition-colors"
           >
             {t.footerPrivacy}
           </Link>
           <Link
-            href="/cookie-policy"
+            href={`/${language}/cookie-policy`}
             className="text-white/50 hover:text-white transition-colors"
           >
             {t.footerCookiePolicy}
           </Link>
           <Link
-            href="/terms"
+            href={`/${language}/terms`}
             className="text-white/50 hover:text-white transition-colors"
           >
             {t.footerTerms}
           </Link>
           <Link
-            href="/refund"
+            href={`/${language}/refund`}
             className="text-white/50 hover:text-white transition-colors"
           >
             {t.footerRefund}
           </Link>
           <Link
-            href="/faq"
+            href={`/${language}/faq`}
             className="text-white/50 hover:text-white transition-colors"
           >
             {t.footerFaq}

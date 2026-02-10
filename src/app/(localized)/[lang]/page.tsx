@@ -12,7 +12,7 @@ import Link from "next/link";
 
 export default function HomePage() {
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   // Replace {anything} placeholder with styled text
   const descParts = t.description.split("{anything}");
@@ -25,11 +25,11 @@ export default function HomePage() {
 
         {/* Content container */}
         <div className="relative z-10 flex flex-col items-center gap-8 md:gap-12 max-w-4xl mx-auto text-center">
-          {/* Tagline */}
+          {/* H1 Tagline - SEO optimized */}
           <div className="space-y-2">
-            <p className="text-lg md:text-xl font-mono text-white/50 tracking-wider uppercase">
+            <h1 className="text-lg md:text-xl font-mono text-white/50 tracking-wider uppercase">
               {t.tagline}
-            </p>
+            </h1>
           </div>
 
           {/* Price Display */}
@@ -59,7 +59,7 @@ export default function HomePage() {
 
           {/* Social Price Link */}
           <Link
-            href="/social-price"
+            href={`/${language}/social-price`}
             className="text-sm font-mono text-price-social/70 hover:text-price-social transition-colors"
           >
             {t.socialPriceLink}

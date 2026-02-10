@@ -220,4 +220,61 @@ export const it: Translations = {
   faqProcessA1: "Ci specializziamo in sviluppo web, applicazioni web e software personalizzato. Esaminiamo ogni progetto individualmente. Se il tuo progetto e al di fuori della nostra competenza, rimborseremo la tua caparra. Descrivi il tuo progetto in dettaglio durante il checkout per la migliore valutazione.",
   faqProcessQ2: "Quanto tempo richiede un progetto?",
   faqProcessA2: "Le tempistiche variano in base alla complessita del progetto e vengono discusse durante la nostra call di consulenza. Non forniamo stime fino a quando non comprendiamo completamente i tuoi requisiti. Progetti urgenti potrebbero essere possibili a discrezione dello sviluppatore.",
+
+  // About page
+  aboutTitle: "Chi Sono",
+  aboutSubtitle: "Lo sviluppatore dietro 100KDEV",
+  aboutIntro: "Sono Drilon Hametaj, uno sviluppatore full-stack con base in Italia. Ho creato 100KDEV come esperimento di pricing dinamico - un modo per rendere i miei servizi accessibili premiando i clienti decisi. Credo che il grande software nasca dalla comunicazione chiara e dalla collaborazione iterativa.",
+  aboutPhilosophyTitle: "Filosofia",
+  aboutPhilosophyText: "Non credo nei preventivi fissi che cercano di indovinare il futuro. Il modello del contatore crea un mercato equo: chi compra prima ottiene prezzi migliori, e il meccanismo di reset da a tutti una chance. Flash Drop rende lo sviluppo premium accessibile a startup e indie maker.",
+  aboutStackTitle: "Stack Tecnologico",
+  aboutStackText: "Lavoro principalmente con tecnologie web moderne: React, Next.js, TypeScript, Node.js e PostgreSQL. Mi trovo a mio agio su tutto lo stack - dal design di API alla creazione di interfacce pixel-perfect. Ogni progetto e un'opportunita per scegliere gli strumenti giusti.",
+  aboutExperience: "10+ anni di sviluppo software",
+  aboutCta: "Pronto a costruire qualcosa?",
+
+  // Services page
+  servicesTitle: "Servizi",
+  servicesSubtitle: "Cosa posso costruire per te",
+  servicesWebApps: "Applicazioni Web",
+  servicesWebAppsDesc: "Applicazioni web full-stack costruite con framework moderni. Da dashboard a marketplace, offro soluzioni performanti e scalabili.",
+  servicesMobile: "App Mobile",
+  servicesMobileDesc: "Applicazioni mobile cross-platform con React Native. Esperienza nativa con un unico codebase per iOS e Android.",
+  servicesSaas: "Prodotti SaaS",
+  servicesSaasDesc: "Soluzioni SaaS complete con autenticazione, billing, pannelli admin e gestione utenti. Prodotti pronti al lancio.",
+  servicesEcommerce: "E-commerce",
+  servicesEcommerceDesc: "Soluzioni e-commerce custom o personalizzazione Shopify/WooCommerce. Integrazione pagamenti, gestione inventario e altro.",
+  servicesApi: "API & Backend",
+  servicesApiDesc: "API RESTful o GraphQL, design database e architettura backend. Infrastruttura scalabile che cresce con te.",
+  servicesConsulting: "Consulenza Tecnica",
+  servicesConsultingDesc: "Review di architettura, audit del codice e strategia tecnica. Ottieni consulenza esperta sulle tue sfide di sviluppo.",
+
+  // Pricing page
+  pricingTitle: "Come Funziona il Pricing",
+  pricingSubtitle: "Un approccio diverso alle tariffe freelance",
+  pricingHowTitle: "Il Modello del Contatore",
+  pricingStep1: "Il prezzo parte da $1.000 e aumenta ogni secondo",
+  pricingStep2: "Paga il 5% di caparra per bloccare il prezzo corrente",
+  pricingStep3: "Il contatore si resetta a $1.000 per tutti gli altri",
+  pricingStep4: "Discutiamo il tuo progetto e finalizziamo l'accordo",
+  pricingFlashDropTitle: "Flash Drop",
+  pricingFlashDropText: "Una volta al mese, il prezzo crolla a $100 per 15 minuti. Tempistica segreta - solo gli iscritti alla newsletter vengono avvisati. E il mio modo di rendere i servizi accessibili a startup e indie maker.",
+  pricingSocialTitle: "Modalita Social Price",
+  pricingSocialText: "Un meccanismo di pricing sperimentale dove l'engagement TikTok determina la tariffa. Piu views, likes e commenti possono sbloccare fasce di prezzo diverse. Controlla la pagina Social Price per i progetti attivi.",
+
+  // Contact page
+  contactTitle: "Contattami",
+  contactSubtitle: "Domande? Idee? Vuoi solo salutare?",
+  contactNameLabel: "Il Tuo Nome",
+  contactEmailLabel: "Email",
+  contactMessageLabel: "Messaggio",
+  contactSubmit: "Invia Messaggio",
+  contactDisclaimer: "Per richieste di progetto, usa il contatore principale per bloccare il tuo prezzo. Questo form e per domande generali e collaborazioni.",
+  contactSuccess: "Messaggio inviato! Ti rispondero presto.",
+
+  // Blog
+  blogTitle: "Blog",
+  blogSubtitle: "Pensieri su sviluppo, pricing e costruzione di prodotti",
+  blogReadMore: "Leggi di piu",
+  blogNoArticles: "Nessun articolo ancora. Torna presto!",
+  blogBack: "Torna al blog",
 };

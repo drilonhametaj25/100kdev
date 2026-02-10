@@ -220,4 +220,61 @@ export const en: Translations = {
   faqProcessA1: "We specialize in web development, web applications, and custom software. We review each project individually. If your project is outside our expertise, we'll refund your deposit. Describe your project in detail during checkout for the best assessment.",
   faqProcessQ2: "How long does a project take?",
   faqProcessA2: "Timelines vary based on project complexity and are discussed during our consultation call. We don't provide estimates until we fully understand your requirements. Rush projects may be possible at the developer's discretion.",
+
+  // About page
+  aboutTitle: "About Me",
+  aboutSubtitle: "The developer behind 100KDEV",
+  aboutIntro: "I'm Drilon Hametaj, a full-stack developer based in Italy. I created 100KDEV as an experiment in dynamic pricing - a way to make my services accessible while rewarding decisive clients. I believe great software is built through clear communication and iterative collaboration.",
+  aboutPhilosophyTitle: "Philosophy",
+  aboutPhilosophyText: "I don't believe in fixed quotes that try to guess the future. The counter model creates a fair market: early buyers get better prices, and the reset mechanism gives everyone a chance. Flash Drop makes premium development accessible to startups and indie makers.",
+  aboutStackTitle: "Tech Stack",
+  aboutStackText: "I work primarily with modern web technologies: React, Next.js, TypeScript, Node.js, and PostgreSQL. I'm comfortable across the full stack - from designing APIs to crafting pixel-perfect UIs. Every project is an opportunity to choose the right tools for the job.",
+  aboutExperience: "10+ years building software",
+  aboutCta: "Ready to build something?",
+
+  // Services page
+  servicesTitle: "Services",
+  servicesSubtitle: "What I can build for you",
+  servicesWebApps: "Web Applications",
+  servicesWebAppsDesc: "Full-stack web applications built with modern frameworks. From dashboards to marketplaces, I deliver performant, scalable solutions.",
+  servicesMobile: "Mobile Apps",
+  servicesMobileDesc: "Cross-platform mobile applications using React Native. Native feel with a single codebase for iOS and Android.",
+  servicesSaas: "SaaS Products",
+  servicesSaasDesc: "Complete SaaS solutions including authentication, billing, admin panels, and user management. Launch-ready products.",
+  servicesEcommerce: "E-commerce",
+  servicesEcommerceDesc: "Custom e-commerce solutions or Shopify/WooCommerce customization. Payment integration, inventory management, and more.",
+  servicesApi: "APIs & Backends",
+  servicesApiDesc: "RESTful or GraphQL APIs, database design, and backend architecture. Scalable infrastructure that grows with you.",
+  servicesConsulting: "Technical Consulting",
+  servicesConsultingDesc: "Architecture reviews, code audits, and technical strategy. Get expert advice on your development challenges.",
+
+  // Pricing page
+  pricingTitle: "How Pricing Works",
+  pricingSubtitle: "A different approach to freelance rates",
+  pricingHowTitle: "The Counter Model",
+  pricingStep1: "Price starts at $1,000 and increases every second",
+  pricingStep2: "Pay 5% deposit to lock the current price",
+  pricingStep3: "Counter resets to $1,000 for everyone else",
+  pricingStep4: "We discuss your project and finalize the agreement",
+  pricingFlashDropTitle: "Flash Drop",
+  pricingFlashDropText: "Once a month, the price crashes to $100 for 15 minutes. Secret timing - only newsletter subscribers get notified. It's my way of making services accessible to startups and indie makers.",
+  pricingSocialTitle: "Social Price Mode",
+  pricingSocialText: "An experimental pricing mechanism where TikTok engagement determines the rate. Higher views, likes, and comments can unlock different pricing tiers. Check the Social Price page for active projects.",
+
+  // Contact page
+  contactTitle: "Get in Touch",
+  contactSubtitle: "Questions? Ideas? Just want to say hi?",
+  contactNameLabel: "Your Name",
+  contactEmailLabel: "Email",
+  contactMessageLabel: "Message",
+  contactSubmit: "Send Message",
+  contactDisclaimer: "For project inquiries, please use the main counter to lock your price. This form is for general questions and collaborations.",
+  contactSuccess: "Message sent! I'll get back to you soon.",
+
+  // Blog
+  blogTitle: "Blog",
+  blogSubtitle: "Thoughts on development, pricing, and building products",
+  blogReadMore: "Read more",
+  blogNoArticles: "No articles yet. Check back soon!",
+  blogBack: "Back to blog",
 };

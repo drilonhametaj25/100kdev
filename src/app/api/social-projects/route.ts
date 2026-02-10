@@ -18,6 +18,7 @@ interface SocialProjectRow {
   saves_count: number;
   calculated_price: number;
   status: string;
+  expires_at: string | null;
 }
 
 export async function GET() {
@@ -55,6 +56,7 @@ export async function GET() {
       floorPrice: p.floor_price,
       capPrice: p.cap_price,
       status: p.status,
+      expiresAt: p.expires_at,
     }));
 
     return NextResponse.json(

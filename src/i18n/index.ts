@@ -12,3 +12,12 @@ export function getTranslations(language: Language): Translations {
 }
 
 export type { Language, Translations, TranslationKey } from "./types";
+export {
+  locales,
+  defaultLocale,
+  localeNames,
+  BASE_URL,
+  getAlternateUrls,
+  isValidLocale,
+  type Locale,
+} from "./config";

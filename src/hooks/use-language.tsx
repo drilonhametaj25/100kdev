@@ -1,9 +1,8 @@
 "use client";
 
 import { useState, useEffect, useCallback, createContext, useContext } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import { getTranslations, type Language, type Translations, type TranslationKey } from "@/i18n";
-
-const LANGUAGE_COOKIE = "100kdev-lang";
 
 interface LanguageContextValue {
   language: Language;
@@ -13,58 +12,58 @@ interface LanguageContextValue {
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
-function detectBrowserLanguage(): Language {
-  if (typeof window === "undefined") return "en";
-
-  const browserLang = navigator.language || (navigator as { userLanguage?: string }).userLanguage || "en";
-  return browserLang.toLowerCase().startsWith("it") ? "it" : "en";
+// Estrae la lingua dalla path
+function getLanguageFromPath(pathname: string): Language {
+  const segments = pathname.split("/").filter(Boolean);
+  const firstSegment = segments[0];
+  if (firstSegment === "it") return "it";
+  return "en";
 }
 
-function getStoredLanguage(): Language | null {
-  if (typeof document === "undefined") return null;
-
-  const cookies = document.cookie.split(";");
-  for (const cookie of cookies) {
-    const [name, value] = cookie.trim().split("=");
-    if (name === LANGUAGE_COOKIE) {
-      return value === "it" ? "it" : "en";
-    }
-  }
-  return null;
+interface LanguageProviderProps {
+  children: React.ReactNode;
+  initialLang?: Language;
 }
 
-function setStoredLanguage(lang: Language) {
-  if (typeof document === "undefined") return;
+export function LanguageProvider({ children, initialLang }: LanguageProviderProps) {
+  const pathname = usePathname();
+  const router = useRouter();
 
-  // Set cookie for 1 year
-  const expires = new Date();
-  expires.setFullYear(expires.getFullYear() + 1);
-  document.cookie = `${LANGUAGE_COOKIE}=${lang};expires=${expires.toUTCString()};path=/;SameSite=Lax`;
-}
+  // Determina la lingua dalla path o dall'initialLang
+  const langFromPath = getLanguageFromPath(pathname);
+  const [language, setLanguageState] = useState<Language>(initialLang || langFromPath);
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguageState] = useState<Language>("en");
-  const [isInitialized, setIsInitialized] = useState(false);
-
-  // Initialize language on mount
+  // Sincronizza con la path quando cambia
   useEffect(() => {
-    const stored = getStoredLanguage();
-    const detected = stored || detectBrowserLanguage();
-    setLanguageState(detected);
-    setIsInitialized(true);
-  }, []);
+    const pathLang = getLanguageFromPath(pathname);
+    if (pathLang !== language) {
+      setLanguageState(pathLang);
+    }
+  }, [pathname, language]);
 
-  const setLanguage = useCallback((lang: Language) => {
-    setLanguageState(lang);
-    setStoredLanguage(lang);
-  }, []);
+  const setLanguage = useCallback(
+    (lang: Language) => {
+      if (lang === language) return;
+
+      setLanguageState(lang);
+
+      // Naviga alla nuova path con la lingua aggiornata
+      const currentPath = pathname;
+      const segments = currentPath.split("/").filter(Boolean);
+
+      // Rimuovi il prefisso lingua esistente se presente
+      if (segments[0] === "en" || segments[0] === "it") {
+        segments.shift();
+      }
+
+      // Costruisci la nuova path
+      const newPath = `/${lang}${segments.length > 0 ? "/" + segments.join("/") : ""}`;
+      router.push(newPath);
+    },
+    [language, pathname, router]
+  );
 
   const t = getTranslations(language);
-
-  // Don't render until initialized to prevent hydration mismatch
-  if (!isInitialized) {
-    return null;
-  }
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage, t }}>

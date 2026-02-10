@@ -4,8 +4,10 @@ import { useEffect, useState } from "react";
 import { SocialPriceDisplay } from "@/components/social/social-price-display";
 import { MetricsDisplay } from "@/components/social/metrics-display";
 import { TikTokEmbed } from "@/components/social/tiktok-embed";
+import { CountdownTimer } from "@/components/social/countdown-timer";
 import { Button } from "@/components/ui/button";
 import { formatPrice } from "@/lib/utils/format";
+import { useLanguage } from "@/hooks/use-language";
 import Link from "next/link";
 
 interface SocialProject {
@@ -25,9 +27,11 @@ interface SocialProject {
   floorPrice: number;
   capPrice: number;
   status: string;
+  expiresAt: string | null;
 }
 
 export default function SocialPricePage() {
+  const { language } = useLanguage();
   const [projects, setProjects] = useState<SocialProject[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedProject, setSelectedProject] = useState<SocialProject | null>(null);
@@ -63,7 +67,7 @@ export default function SocialPricePage() {
       <main className="min-h-screen flex flex-col items-center justify-center p-4">
         <h1 className="text-3xl font-mono font-bold text-white mb-4">Social Price Mode</h1>
         <p className="text-white/50 mb-8">No social projects available right now.</p>
-        <Link href="/">
+        <Link href={`/${language}`}>
           <Button variant="secondary">← Back to Counter Mode</Button>
         </Link>
       </main>
@@ -96,6 +100,11 @@ export default function SocialPricePage() {
             capPrice={selectedProject.capPrice}
           />
 
+          {/* Countdown Timer */}
+          <div className="max-w-md mx-auto">
+            <CountdownTimer expiresAt={selectedProject.expiresAt} />
+          </div>
+
           {/* Metrics */}
           <div className="max-w-2xl mx-auto">
             <MetricsDisplay metrics={selectedProject.metrics} />
@@ -118,7 +127,7 @@ export default function SocialPricePage() {
 
           {/* Back link */}
           <div className="text-center">
-            <Link href="/">
+            <Link href={`/${language}`}>
               <Button variant="ghost">← Back to Counter Mode</Button>
             </Link>
           </div>
@@ -201,7 +210,7 @@ export default function SocialPricePage() {
 
         {/* Back link */}
         <div className="text-center">
-          <Link href="/">
+          <Link href={`/${language}`}>
             <Button variant="ghost">← Back to Counter Mode</Button>
           </Link>
         </div>

@@ -217,6 +217,63 @@ export interface Translations {
   faqProcessA1: string;
   faqProcessQ2: string;
   faqProcessA2: string;
+
+  // About page
+  aboutTitle: string;
+  aboutSubtitle: string;
+  aboutIntro: string;
+  aboutPhilosophyTitle: string;
+  aboutPhilosophyText: string;
+  aboutStackTitle: string;
+  aboutStackText: string;
+  aboutExperience: string;
+  aboutCta: string;
+
+  // Services page
+  servicesTitle: string;
+  servicesSubtitle: string;
+  servicesWebApps: string;
+  servicesWebAppsDesc: string;
+  servicesMobile: string;
+  servicesMobileDesc: string;
+  servicesSaas: string;
+  servicesSaasDesc: string;
+  servicesEcommerce: string;
+  servicesEcommerceDesc: string;
+  servicesApi: string;
+  servicesApiDesc: string;
+  servicesConsulting: string;
+  servicesConsultingDesc: string;
+
+  // Pricing page
+  pricingTitle: string;
+  pricingSubtitle: string;
+  pricingHowTitle: string;
+  pricingStep1: string;
+  pricingStep2: string;
+  pricingStep3: string;
+  pricingStep4: string;
+  pricingFlashDropTitle: string;
+  pricingFlashDropText: string;
+  pricingSocialTitle: string;
+  pricingSocialText: string;
+
+  // Contact page
+  contactTitle: string;
+  contactSubtitle: string;
+  contactNameLabel: string;
+  contactEmailLabel: string;
+  contactMessageLabel: string;
+  contactSubmit: string;
+  contactDisclaimer: string;
+  contactSuccess: string;
+
+  // Blog
+  blogTitle: string;
+  blogSubtitle: string;
+  blogReadMore: string;
+  blogNoArticles: string;
+  blogBack: string;
 }
 
 export type TranslationKey = keyof Translations;

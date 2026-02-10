@@ -19,6 +19,7 @@ interface SocialProject {
   calculated_price: number;
   is_active: boolean;
   status: string;
+  expires_at: string | null;
 }
 
 interface FormData {
@@ -33,6 +34,7 @@ interface FormData {
   commentsCount: number;
   sharesCount: number;
   savesCount: number;
+  durationHours: number;
 }
 
 const initialFormData: FormData = {
@@ -47,6 +49,7 @@ const initialFormData: FormData = {
   commentsCount: 0,
   sharesCount: 0,
   savesCount: 0,
+  durationHours: 48,
 };
 
 export default function SocialAdminPage() {
@@ -323,6 +326,24 @@ export default function SocialAdminPage() {
               </div>
             </div>
 
+            {/* Offer Duration */}
+            <div>
+              <label className="block text-sm font-mono text-white/50 mb-1">
+                Offer Duration (hours)
+              </label>
+              <input
+                type="number"
+                value={formData.durationHours}
+                onChange={(e) => setFormData({ ...formData, durationHours: Number(e.target.value) })}
+                min={1}
+                max={720}
+                className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded text-white font-mono"
+              />
+              <p className="text-xs text-white/30 mt-1">
+                Default: 48 hours. Max: 30 days (720 hours)
+              </p>
+            </div>
+
             {/* Metrics */}
             <div>
               <label className="block text-sm font-mono text-white/50 mb-2">
@@ -426,6 +447,13 @@ export default function SocialAdminPage() {
                   <span className={`text-xs ${project.is_active ? 'text-green-400' : 'text-white/50'}`}>
                     {project.status} {project.is_active ? '(active)' : '(inactive)'}
                   </span>
+                  {project.expires_at && (
+                    <p className={`text-xs mt-1 ${new Date(project.expires_at) > new Date() ? 'text-price-social' : 'text-red-400'}`}>
+                      {new Date(project.expires_at) > new Date()
+                        ? `Expires: ${new Date(project.expires_at).toLocaleString()}`
+                        : 'EXPIRED'}
+                    </p>
+                  )}
                 </div>
               </div>
 
