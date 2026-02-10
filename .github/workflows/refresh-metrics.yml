@@ -1,0 +1,29 @@
+name: Refresh TikTok Metrics
+
+on:
+  schedule:
+    # Run every 2 minutes
+    - cron: '*/2 * * * *'
+  workflow_dispatch:
+    # Allow manual trigger
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call refresh endpoint
+        run: |
+          response=$(curl -s -w "\n%{http_code}" -X GET "${{ secrets.SITE_URL }}/api/admin/social/fetch-metrics" \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            -H "Content-Type: application/json")
+
+          http_code=$(echo "$response" | tail -n1)
+          body=$(echo "$response" | sed '$d')
+
+          echo "Response: $body"
+          echo "HTTP Code: $http_code"
+
+          if [ "$http_code" -ge 400 ]; then
+            echo "Request failed with status $http_code"
+            exit 1
+          fi

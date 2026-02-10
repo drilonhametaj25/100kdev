@@ -1,0 +1,113 @@
+[    2193ms] [WARNING] WebSocket connection to 'wss://rtvqautrbnepytzxklxl.supabase.co/realtime/v1/websocket?apikey=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ0dnFhdXRyYm5lcHl0enhrbHhsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA3MDI0NTQsImV4cCI6MjA4NjI3ODQ1NH0.chtndoJIIWoRfT1CAnaJNNkjyrsFItRp37G5rIwo4Yo&vsn=2.0.0' failed: WebSocket is closed before the connection is established. @ webpack-internal:///(app-pages-browser)/./node_modules/@supabase/realtime-js/dist/module/RealtimeClient.js:200
+[  198180ms] [WARNING] WebSocket connection to 'wss://rtvqautrbnepytzxklxl.supabase.co/realtime/v1/websocket?apikey=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ0dnFhdXRyYm5lcHl0enhrbHhsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA3MDI0NTQsImV4cCI6MjA4NjI3ODQ1NH0.chtndoJIIWoRfT1CAnaJNNkjyrsFItRp37G5rIwo4Yo&vsn=2.0.0' failed: WebSocket is closed before the connection is established. @ webpack-internal:///(app-pages-browser)/./node_modules/@supabase/realtime-js/dist/module/RealtimeClient.js:200
+[  199683ms] [WARNING] WebSocket connection to 'wss://rtvqautrbnepytzxklxl.supabase.co/realtime/v1/websocket?apikey=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ0dnFhdXRyYm5lcHl0enhrbHhsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA3MDI0NTQsImV4cCI6MjA4NjI3ODQ1NH0.chtndoJIIWoRfT1CAnaJNNkjyrsFItRp37G5rIwo4Yo&vsn=2.0.0' failed: WebSocket is closed before the connection is established. @ webpack-internal:///(app-pages-browser)/./node_modules/@supabase/realtime-js/dist/module/RealtimeClient.js:200
+[  352197ms] [WARNING] WebSocket connection to 'wss://rtvqautrbnepytzxklxl.supabase.co/realtime/v1/websocket?apikey=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ0dnFhdXRyYm5lcHl0enhrbHhsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA3MDI0NTQsImV4cCI6MjA4NjI3ODQ1NH0.chtndoJIIWoRfT1CAnaJNNkjyrsFItRp37G5rIwo4Yo&vsn=2.0.0' failed: WebSocket is closed before the connection is established. @ webpack-internal:///(app-pages-browser)/./node_modules/@supabase/realtime-js/dist/module/RealtimeClient.js:200
+[  353052ms] [WARNING] WebSocket connection to 'wss://rtvqautrbnepytzxklxl.supabase.co/realtime/v1/websocket?apikey=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ0dnFhdXRyYm5lcHl0enhrbHhsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA3MDI0NTQsImV4cCI6MjA4NjI3ODQ1NH0.chtndoJIIWoRfT1CAnaJNNkjyrsFItRp37G5rIwo4Yo&vsn=2.0.0' failed: WebSocket is closed before the connection is established. @ webpack-internal:///(app-pages-browser)/./node_modules/@supabase/realtime-js/dist/module/RealtimeClient.js:200
+[  398824ms] [WARNING] WebSocket connection to 'wss://rtvqautrbnepytzxklxl.supabase.co/realtime/v1/websocket?apikey=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ0dnFhdXRyYm5lcHl0enhrbHhsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA3MDI0NTQsImV4cCI6MjA4NjI3ODQ1NH0.chtndoJIIWoRfT1CAnaJNNkjyrsFItRp37G5rIwo4Yo&vsn=2.0.0' failed: WebSocket is closed before the connection is established. @ webpack-internal:///(app-pages-browser)/./node_modules/@supabase/realtime-js/dist/module/RealtimeClient.js:200
+[  399508ms] [WARNING] WebSocket connection to 'wss://rtvqautrbnepytzxklxl.supabase.co/realtime/v1/websocket?apikey=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ0dnFhdXRyYm5lcHl0enhrbHhsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA3MDI0NTQsImV4cCI6MjA4NjI3ODQ1NH0.chtndoJIIWoRfT1CAnaJNNkjyrsFItRp37G5rIwo4Yo&vsn=2.0.0' failed: WebSocket is closed before the connection is established. @ webpack-internal:///(app-pages-browser)/./node_modules/@supabase/realtime-js/dist/module/RealtimeClient.js:200
+[ 1200957ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3003/?_rsc=r3yhw:0
+[ 1200983ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3003/?_rsc=r3yhw:0
+[ 1201008ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3003/?_rsc=r3yhw:0
+[ 1201035ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3003/?_rsc=r3yhw:0
+[ 1201069ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3003/:0
+[ 1201366ms] Error: Cannot find module './276.js'
+Require stack:
+- C:\Users\drilo\workspace\drilon\counter\.next\server\webpack-runtime.js
+- C:\Users\drilo\workspace\drilon\counter\.next\server\pages\_document.js
+- C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\server\require.js
+- C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\server\load-components.js
+- C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\build\utils.js
+- C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\server\dev\hot-middleware.js
+- C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\server\lib\router-server.js
+- C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\server\lib\start-server.js
+    at Function.<anonymous> (node:internal/modules/cjs/loader:1383:15)
+    at <unknown> (file://C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\server\require-hook.js:55:36)
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1025:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1030:22)
+    at Function._load (node:internal/modules/cjs/loader:1192:37)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1463:12)
+    at mod.require (file://C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:147:16)
+    at __webpack_require__.f.require (file://C:\Users\drilo\workspace\drilon\counter\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (file://C:\Users\drilo\workspace\drilon\counter\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (file://C:\Users\drilo\workspace\drilon\counter\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (file://C:\Users\drilo\workspace\drilon\counter\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (file://C:\Users\drilo\workspace\drilon\counter\.next\server\app\page.js:22:7698)
+    at Object.<anonymous> (file://C:\Users\drilo\workspace\drilon\counter\.next\server\app\page.js:22:7755)
+    at Module._compile (node:internal/modules/cjs/loader:1706:14)
+    at Object..js (node:internal/modules/cjs/loader:1839:10)
+    at Module.load (node:internal/modules/cjs/loader:1441:32)
+    at Function._load (node:internal/modules/cjs/loader:1263:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1463:12)
+    at mod.require (file://C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:147:16)
+    at requirePage (file://C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\server\require.js:109:84)
+    at <unknown> (file://C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\server\load-components.js:98:84)
+    at async loadComponentsImpl (file://C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\server\load-components.js:98:26)
+    at async DevServer.findPageComponentsImpl (file://C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\server\next-server.js:709:36)
+    at async DevServer.findPageComponents (file://C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\server\dev\next-dev-server.js:577:20)
+    at async DevServer.renderPageComponent (file://C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\server\base-server.js:1897:24)
+    at async DevServer.renderToResponseImpl (file://C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\server\base-server.js:1949:32)
+    at async DevServer.pipeImpl (file://C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\server\base-server.js:921:25)
+    at async NextNodeServer.handleCatchallRenderRequest (file://C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (file://C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\server\base-server.js:817:17)
+    at async (file://C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\server\dev\next-dev-server.js:339:20)
+    at async Span.traceAsyncFn (file://C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (file://C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (file://C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\server\lib\router-server.js:173:21)
+    at async handleRequest (file://C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\server\lib\router-server.js:350:24)
+    at async requestHandlerImpl (file://C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\server\lib\router-server.js:374:13)
+    at async Server.requestListener (file://C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\server\lib\start-server.js:141:13)
+[ 1210744ms] [WARNING] [Fast Refresh] performing full reload because your application had an unrecoverable error @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/hot-reloader-client.js:349
+[ 1211420ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3003/:0
+[ 1211570ms] Error: Cannot find module './682.js'
+Require stack:
+- C:\Users\drilo\workspace\drilon\counter\.next\server\webpack-runtime.js
+- C:\Users\drilo\workspace\drilon\counter\.next\server\app\_not-found\page.js
+- C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\server\require.js
+- C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\server\load-components.js
+- C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\build\utils.js
+- C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\server\dev\hot-middleware.js
+- C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\server\lib\router-server.js
+- C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\server\lib\start-server.js
+    at Function.<anonymous> (node:internal/modules/cjs/loader:1383:15)
+    at <unknown> (file://C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\server\require-hook.js:55:36)
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1025:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1030:22)
+    at Function._load (node:internal/modules/cjs/loader:1192:37)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1463:12)
+    at mod.require (file://C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:147:16)
+    at __webpack_require__.f.require (file://C:\Users\drilo\workspace\drilon\counter\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (file://C:\Users\drilo\workspace\drilon\counter\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (file://C:\Users\drilo\workspace\drilon\counter\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (file://C:\Users\drilo\workspace\drilon\counter\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (file://C:\Users\drilo\workspace\drilon\counter\.next\server\pages\_document.js:1:335)
+    at Object.<anonymous> (file://C:\Users\drilo\workspace\drilon\counter\.next\server\pages\_document.js:1:376)
+    at Module._compile (node:internal/modules/cjs/loader:1706:14)
+    at Object..js (node:internal/modules/cjs/loader:1839:10)
+    at Module.load (node:internal/modules/cjs/loader:1441:32)
+    at Function._load (node:internal/modules/cjs/loader:1263:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1463:12)
+    at mod.require (file://C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:147:16)
+    at requirePage (file://C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\server\require.js:109:84)
+    at <unknown> (file://C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\server\load-components.js:72:65)
+    at async loadComponentsImpl (file://C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\server\load-components.js:71:33)
+    at async DevServer.findPageComponentsImpl (file://C:\Users\drilo\workspace\drilon\counter\node_modules\next\dist\server\next-server.js:709:36)
