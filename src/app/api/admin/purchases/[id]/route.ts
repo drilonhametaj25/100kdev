@@ -19,6 +19,11 @@ export async function PATCH(
       updateData.status = body.status;
     }
 
+    // Handle action field from frontend (accept/reject buttons)
+    if (body.action !== undefined) {
+      updateData.status = body.action === "accept" ? "accepted" : "rejected";
+    }
+
     if (body.adminNotes !== undefined) {
       updateData.admin_notes = body.adminNotes;
     }
