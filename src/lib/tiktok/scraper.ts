@@ -1,10 +1,6 @@
 // TikTok Video Scraper via UrLeBird
 // Uses UrLeBird.com as intermediary to get metrics
-
-import { exec } from "child_process";
-import { promisify } from "util";
-
-const execAsync = promisify(exec);
+// Compatible with Vercel serverless (no curl dependency)
 
 export interface TikTokMetrics {
   views: number;
@@ -63,7 +59,6 @@ function parseCount(value: string): number {
   }
 
   // Handle plain numbers (may have commas or dots as thousand separators)
-  // For numbers like "17.69" we need to handle decimal points
   const plainNum = parseFloat(cleanValue.replace(/,/g, ""));
   return isNaN(plainNum) ? 0 : Math.round(plainNum);
 }
@@ -92,6 +87,7 @@ export function extractVideoId(url: string): string | null {
 
 /**
  * Scrape TikTok video metrics via UrLeBird
+ * Uses native fetch compatible with Vercel serverless
  */
 export async function scrapeTikTokVideo(url: string): Promise<ScrapeResult> {
   try {
@@ -115,22 +111,60 @@ export async function scrapeTikTokVideo(url: string): Promise<ScrapeResult> {
 
     console.log(`Fetching metrics from UrLeBird: ${urlebirdUrl}`);
 
-    // Use curl via child_process to bypass Cloudflare (Node.js fetch gets blocked)
-    const userAgent = getRandomUserAgent();
-    const curlCommand = `curl -s "${urlebirdUrl}" -H "User-Agent: ${userAgent}" -H "Accept: text/html" --max-time 15`;
+    // Use native fetch with browser-like headers
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 15000);
 
     let html: string;
     try {
-      const { stdout, stderr } = await execAsync(curlCommand, { maxBuffer: 5 * 1024 * 1024 });
-      if (stderr) {
-        console.error("Curl stderr:", stderr);
+      const response = await fetch(urlebirdUrl, {
+        signal: controller.signal,
+        headers: {
+          "User-Agent": getRandomUserAgent(),
+          "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+          "Accept-Language": "en-US,en;q=0.5",
+          "Accept-Encoding": "gzip, deflate, br",
+          "Connection": "keep-alive",
+          "Upgrade-Insecure-Requests": "1",
+          "Sec-Fetch-Dest": "document",
+          "Sec-Fetch-Mode": "navigate",
+          "Sec-Fetch-Site": "none",
+          "Sec-Fetch-User": "?1",
+          "Cache-Control": "no-cache",
+          "Pragma": "no-cache",
+        },
+      });
+
+      clearTimeout(timeoutId);
+
+      if (!response.ok) {
+        // Cloudflare block
+        if (response.status === 403 || response.status === 503) {
+          console.error(`Cloudflare blocked: HTTP ${response.status}`);
+          return {
+            success: false,
+            error: "Cloudflare blocked - retry via GitHub Actions cron",
+          };
+        }
+        return {
+          success: false,
+          error: `HTTP ${response.status}`,
+        };
       }
-      html = stdout;
-    } catch (curlError) {
-      console.error("Curl error:", curlError);
+
+      html = await response.text();
+    } catch (fetchError) {
+      clearTimeout(timeoutId);
+      if (fetchError instanceof Error && fetchError.name === "AbortError") {
+        return {
+          success: false,
+          error: "Request timeout",
+        };
+      }
+      console.error("Fetch error:", fetchError);
       return {
         success: false,
-        error: "Failed to fetch from UrLeBird via curl",
+        error: "Failed to fetch from UrLeBird",
       };
     }
 
