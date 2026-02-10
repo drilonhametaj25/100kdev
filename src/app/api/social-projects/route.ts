@@ -57,7 +57,15 @@ export async function GET() {
       status: p.status,
     }));
 
-    return NextResponse.json({ projects });
+    return NextResponse.json(
+      { projects },
+      {
+        headers: {
+          "Cache-Control": "no-store, no-cache, must-revalidate",
+          "Pragma": "no-cache",
+        },
+      }
+    );
   } catch (error) {
     console.error("Social projects API error:", error);
     return NextResponse.json(

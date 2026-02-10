@@ -63,8 +63,8 @@ export async function POST(request: NextRequest) {
       project.cap_price || 100000
     );
 
-    // Update project
-    const { error: updateError } = await supabase
+    // Update project and return updated row
+    const { data: updatedProject, error: updateError } = await supabase
       .from("social_projects")
       .update({
         views_count: body.views || 0,
@@ -74,18 +74,25 @@ export async function POST(request: NextRequest) {
         calculated_price: calculatedPrice,
         updated_at: new Date().toISOString(),
       })
-      .eq("id", body.projectId);
+      .eq("id", body.projectId)
+      .select("calculated_price, views_count, likes_count, comments_count, shares_count")
+      .single();
 
     if (updateError) {
       console.error("Failed to update metrics:", updateError);
       return NextResponse.json({ error: updateError.message }, { status: 500 });
     }
 
-    console.log(`Updated metrics for project ${body.projectId}: views=${body.views}, likes=${body.likes}, comments=${body.comments}, shares=${body.shares}, price=${calculatedPrice}`);
+    console.log(`Updated metrics for project ${body.projectId}:`);
+    console.log(`  Input: views=${body.views}, likes=${body.likes}, comments=${body.comments}, shares=${body.shares}`);
+    console.log(`  Calculated price: ${calculatedPrice}`);
+    console.log(`  DB returned: ${JSON.stringify(updatedProject)}`);
 
     return NextResponse.json({
       success: true,
       calculatedPrice,
+      savedPrice: updatedProject?.calculated_price,
+      dbRow: updatedProject,
     });
   } catch (error) {
     console.error("Update metrics error:", error);
