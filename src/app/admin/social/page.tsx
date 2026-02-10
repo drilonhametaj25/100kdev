@@ -90,6 +90,10 @@ export default function SocialAdminPage() {
 
   const handleEdit = (project: SocialProject) => {
     setEditingId(project.id);
+    // Calculate remaining hours from expires_at
+    const remainingHours = project.expires_at
+      ? Math.max(1, Math.round((new Date(project.expires_at).getTime() - Date.now()) / (1000 * 60 * 60)))
+      : 48;
     setFormData({
       title: project.title,
       description: project.description,
@@ -102,6 +106,7 @@ export default function SocialAdminPage() {
       commentsCount: project.comments_count,
       sharesCount: project.shares_count,
       savesCount: project.saves_count,
+      durationHours: remainingHours,
     });
     setShowForm(true);
     setError(null);
