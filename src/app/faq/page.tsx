@@ -40,7 +40,6 @@ export default function FAQPage() {
     <LegalPageLayout title={t.faqTitle}>
       <FAQSection title={t.faqPricingTitle}>
         <FAQItem question={t.faqPricingQ1} answer={t.faqPricingA1} />
-        <FAQItem question={t.faqPricingQ2} answer={t.faqPricingA2} />
         <FAQItem question={t.faqPricingQ3} answer={t.faqPricingA3} />
       </FAQSection>
 
