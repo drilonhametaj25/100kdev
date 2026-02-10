@@ -69,6 +69,12 @@ async function scrapeMetrics(videoId) {
     // Get page content
     const content = await page.content();
 
+    // Check if video doesn't exist on UrLeBird
+    if (content.includes("Couldn't find this video")) {
+      console.error("Video not found on UrLeBird");
+      return null;
+    }
+
     // Extract metrics using regex
     const viewsMatch = content.match(/([\d.,]+[KMB]?)\s*views/i);
     const likesMatch = content.match(/([\d.,]+[KMB]?)\s*likes/i);
@@ -140,8 +146,9 @@ async function main() {
     try {
       const metrics = await scrapeMetrics(videoId);
 
-      if (metrics.views === 0 && metrics.likes === 0) {
-        console.error("Could not extract metrics");
+      // null means video not found on UrLeBird
+      if (metrics === null) {
+        console.error("Video not indexed by UrLeBird yet");
         failed++;
         continue;
       }
