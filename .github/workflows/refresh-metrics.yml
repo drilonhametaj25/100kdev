@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Call refresh endpoint
         run: |
-          response=$(curl -s -w "\n%{http_code}" -X GET "${{ secrets.SITE_URL }}/api/admin/social/fetch-metrics" \
+          response=$(curl -sL -w "\n%{http_code}" -X GET "${{ secrets.SITE_URL }}/api/admin/social/fetch-metrics" \
             -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
             -H "Content-Type: application/json")
 
